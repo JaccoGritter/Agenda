@@ -1,6 +1,4 @@
 
-let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-
 
 function updateCards() {
 
