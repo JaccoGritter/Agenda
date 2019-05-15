@@ -73,6 +73,7 @@ function goRight7() {
 
 function edit() {
     console.log("edit screen");
+    document.getElementById("form").style.display = "block";
 }
 
 document.getElementById("arrowLeft").addEventListener("dblclick", goLeft7);

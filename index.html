@@ -25,6 +25,21 @@
     opacity: 0.7;
   }
 
+  #form {
+    width: 20%;
+    height: 10rem;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3.5rem;
+    left: 0;
+    right: 0;
+    background-color: rgb(254, 255, 165);
+    z-index: 10;
+    display: none;
+    box-shadow: 5px 10px gray;
+  }
+
   @media screen and (max-width: 576px) {
     #arrowLeft
      {
@@ -61,8 +76,12 @@
   <h1 class="display-3"><i class="far fa-calendar-alt"></i> Agenda</h1>
    
 </div>
+
+
   
 <div class="container">
+
+    <textarea name = "entry" id="form" placeholder="type here"></textarea>
   
   <div class = "row card-deck">
 
