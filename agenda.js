@@ -20,28 +20,30 @@ function updateCards(number) {
     let cardheader = document.getElementsByClassName("card-header");
     let cardbody = document.getElementsByClassName("card-body");
     for (let i=0; i<3; i++) {
-        cardheader[i].innerHTML = agenda2019[number+i].getDayno();
+        cardheader[i].innerHTML = calculateDate( agenda2019[number+i].getDayno() );
         cardbody[i].innerHTML = agenda2019[number+i].getTodo();
     }
 }
 
 function calculateDate(daynumber) {
-    let monthsBreakpoints = [31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
+    let monthsBreakpoints = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365];
     let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-    if (daynumber < 1 || daynumber >365) return false;
+    if (daynumber < 1 || daynumber >365) return;
     let month = 0;
     let day = 0;
-    for (let i = 0; i<12; i++) {
-        //console.log(daynumber > monthsBreakpoints[i]);
-        if (daynumber < monthsBreakpoints[i]) {
-            month = i + 1;
+    for (let i = 0; i<13; i++) {
+        
+        if (daynumber <= monthsBreakpoints[i]) {
+            month = i;
             day = daynumber - monthsBreakpoints[i-1];
             break;
         }
     }
-    console.log(day + " - " + month);
+    return(day + " - " + month);
 }
+
+
 
 let agenda2019 = [];
 for (let i = 0; i < 365; i++) {
@@ -53,7 +55,7 @@ agenda2019[133] = new agendaEntry(134, "Bootstrap theorie. Pagina bouwen met beh
 agenda2019[134] = new agendaEntry(135, "SASS theorie doornemen. Pagina bouwen met behulp van SASS");
 agenda2019[135] = new agendaEntry(136, "JavaScript Design patterns. Verder werken aan bestaande projecten");
 
-calculateDate(135);
+calculateDate(365);
 let daynoToday = 135;
 updateCards(daynoToday-2);   // get current day in the middle
 
