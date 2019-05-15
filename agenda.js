@@ -72,8 +72,13 @@ function goRight7() {
 }
 
 function edit() {
-    console.log("edit screen");
+    //console.log("edit screen");
     document.getElementById("form").style.display = "block";
+}
+
+function processInput() {
+    //console.log("lost focus");
+    document.getElementById("form").style.display = "none";
 }
 
 document.getElementById("arrowLeft").addEventListener("dblclick", goLeft7);
@@ -84,6 +89,8 @@ document.getElementById("arrowUp").addEventListener("click", goLeft1);
 document.getElementById("arrowDown").addEventListener("click", goRight1);
 
 document.getElementById("edit").addEventListener("click", edit);
+
+
 
 let agenda2019 = [];
 for (let i = 0; i < 365; i++) {
