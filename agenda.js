@@ -43,6 +43,20 @@ function calculateDate(daynumber) {
     return(day + " - " + month);
 }
 
+function goLeft() {
+    daynoToday--;
+    updateCards(daynoToday-2);
+}
+
+function goRight() {
+    daynoToday++;
+    updateCards(daynoToday-2);
+}
+
+document.getElementById("arrowLeft").addEventListener("click", goLeft);
+document.getElementById("arrowRight").addEventListener("click", goRight);
+document.getElementById("arrowUp").addEventListener("click", goLeft);
+document.getElementById("arrowDown").addEventListener("click", goRight);
 
 
 let agenda2019 = [];
