@@ -49,13 +49,25 @@ function calculateDayNo(month, day) {
     return (calculatedMonth + day);
 }
 
-function goLeft() {
-    daynoToday--;
+function goLeft1() {
+    daynoToday -= 1;
+    if(daynoToday < 1) daynoToday = 2;
     updateCards(daynoToday-2);
 }
 
-function goRight() {
-    daynoToday++;
+function goLeft7() {
+    daynoToday -= 5;                // element will catch the single click as well!
+    if(daynoToday < 1) daynoToday = 2;
+    updateCards(daynoToday-2);
+}
+
+function goRight1() {
+    daynoToday += 1;
+    updateCards(daynoToday-2);
+}
+
+function goRight7() {
+    daynoToday += 5;                // element will catch the single click as well!
     updateCards(daynoToday-2);
 }
 
@@ -63,10 +75,12 @@ function edit() {
     console.log("edit screen");
 }
 
-document.getElementById("arrowLeft").addEventListener("click", goLeft);
-document.getElementById("arrowRight").addEventListener("click", goRight);
-document.getElementById("arrowUp").addEventListener("click", goLeft);
-document.getElementById("arrowDown").addEventListener("click", goRight);
+document.getElementById("arrowLeft").addEventListener("dblclick", goLeft7);
+document.getElementById("arrowLeft").addEventListener("click", goLeft1);
+document.getElementById("arrowRight").addEventListener("click", goRight1);
+document.getElementById("arrowRight").addEventListener("dblclick", goRight7);
+document.getElementById("arrowUp").addEventListener("click", goLeft1);
+document.getElementById("arrowDown").addEventListener("click", goRight1);
 
 document.getElementById("edit").addEventListener("click", edit);
 
@@ -81,7 +95,6 @@ agenda2019[134] = new agendaEntry(135, "SASS theorie doornemen. Pagina bouwen me
 agenda2019[135] = new agendaEntry(136, "JavaScript Design patterns. Verder werken aan bestaande projecten");
 
 let d = new Date();
-console.log(d.getMonth() + "- " + d.getDate());
 let daynoToday = calculateDayNo(d.getMonth(),d.getDate());
 updateCards(daynoToday-2);   // get current day in the middle
 
