@@ -13,6 +13,10 @@ class agendaEntry {
     getTodo() {
         return this.todo;
     }
+
+    setTodo(entry) {
+        this.todo = entry;
+    }
 }
 
 function updateCards(number) {
@@ -74,11 +78,15 @@ function goRight7() {
 function edit() {
     //console.log("edit screen");
     document.getElementById("form").style.display = "block";
+    document.getElementById("form").value = agenda2019[daynoToday-1].getTodo();
+    if (document.getElementById("form").value == " * empty * ") document.getElementById("form").value = "";
 }
 
 function processInput() {
-    //console.log("lost focus");
+    agenda2019[daynoToday-1].setTodo( document.getElementById("form").value );
+    document.getElementById("form").value = "";
     document.getElementById("form").style.display = "none";
+    updateCards(daynoToday-2);
 }
 
 document.getElementById("arrowLeft").addEventListener("dblclick", goLeft7);
@@ -98,11 +106,18 @@ for (let i = 0; i < 365; i++) {
 }
 
 // for testing purposes
-agenda2019[133] = new agendaEntry(134, "Bootstrap theorie. Pagina bouwen met behulp van bootstrap");
-agenda2019[134] = new agendaEntry(135, "SASS theorie doornemen. Pagina bouwen met behulp van SASS");
-agenda2019[135] = new agendaEntry(136, "JavaScript Design patterns. Verder werken aan bestaande projecten");
+// agenda2019[133] = new agendaEntry(134, "Bootstrap theorie. Pagina bouwen met behulp van bootstrap");
+// agenda2019[134] = new agendaEntry(135, "SASS theorie doornemen. Pagina bouwen met behulp van SASS");
+// agenda2019[135] = new agendaEntry(136, "JavaScript Design patterns. Verder werken aan bestaande projecten");
 
 let d = new Date();
 let daynoToday = calculateDayNo(d.getMonth(),d.getDate());
+
+// for testing purposes
+    agenda2019[daynoToday-2] = new agendaEntry((daynoToday-1), "Bootstrap theorie. Pagina bouwen met behulp van bootstrap");
+    agenda2019[daynoToday-1] = new agendaEntry((daynoToday), "SASS theorie doornemen. Pagina bouwen met behulp van SASS");
+    agenda2019[daynoToday] = new agendaEntry((daynoToday+1), "JavaScript Design patterns. Verder werken aan bestaande projecten");
+
+
 updateCards(daynoToday-2);   // get current day in the middle
 
